@@ -31,8 +31,9 @@ def align_data(input_dir='./input_dir/', output_dir='./out_dir'):
         
 #        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)  #Attribute Error with this command try below
 
-        gpu_options =tf.config.gpu.set_per_process_memory_fraction(0.5)
-        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
+#        gpu_options =tf.config.gpu.set_per_process_memory_fraction(0.5)  # As per https://github.com/zzh8829/yolov3-tf2/issues/23
+#        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
+        sess = tf.Session(config=tf.ConfigProto(log_device_placement=False))    #Removed gpu_options since commented out above
         with sess.as_default():
             pnet, rnet, onet = detect_face.create_mtcnn(sess)
 
