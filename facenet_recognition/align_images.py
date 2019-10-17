@@ -30,9 +30,9 @@ def align_data(input_dir='./input_dir/', output_dir='./out_dir'):
     with tf.Graph().as_default():
         
 
-        sess = tf.Session(config=tf.ConfigProto(log_device_placement=False))    #Removed gpu_options since commented out above
-        with sess.as_default():
-            pnet, rnet, onet = detect_face.create_mtcnn(sess)
+#        sess = tf.Session(config=tf.ConfigProto(log_device_placement=False))    #Removed gpu_options since commented out above
+#        with sess.as_default():
+        pnet, rnet, onet = detect_face.create_mtcnn(None)   # From https://github.com/davidsandberg/facenet/issues/412
 
     minsize = 20  # minimum size of face
     threshold = [0.6, 0.7, 0.7]  # three steps's threshold
