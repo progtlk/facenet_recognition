@@ -28,7 +28,9 @@ def align_data(input_dir='./input_dir/', output_dir='./out_dir'):
     startTime = datetime.now()
     print('Creating networks and loading parameters')
     with tf.Graph().as_default():
+        
 #        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)  #Attribute Error with this command try below
+
         gpu_options =tf.config.gpu.set_per_process_memory_fraction(0.5)
         sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
         with sess.as_default():
